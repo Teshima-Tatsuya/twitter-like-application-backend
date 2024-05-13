@@ -70,7 +70,7 @@ variable "vpc_sg" {
             description = "ssh"
             from = 22
             to = 22
-            protocol = "SSH"
+            protocol = "TCP"
             cidr = "0.0.0.0/0"
         },
       }
