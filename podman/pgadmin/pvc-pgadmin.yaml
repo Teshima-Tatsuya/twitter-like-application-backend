@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-rails
+  name: pvc-pgadmin
 spec:
   accessModes:
     - ReadWriteOnce

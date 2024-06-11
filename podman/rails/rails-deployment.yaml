@@ -32,7 +32,9 @@ spec:
             value: development
         volumeMounts:
           - name: rails-storage
-            mountPath: /tmp
+            mountPath: /rails/tmp
+          - name: rails-storage
+            mountPath: /rails/vendor
       volumes:
         - name: rails-storage
           persistentVolumeClaim:

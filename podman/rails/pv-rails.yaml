@@ -3,10 +3,11 @@ kind: PersistentVolume
 metadata:
   name: pv-rails
 spec:
+  storageClassName: manual
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /var/rails-data
-    type: DirectoryOrCreate
+    path: /rails
+    type: Directory
