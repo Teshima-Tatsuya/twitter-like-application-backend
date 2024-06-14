@@ -7,7 +7,7 @@ spec:
     app: pgadmin
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080  # NodePortとして使用するポート番号
+      port: 81
+      targetPort: 81
+      nodePort: 30081  # NodePortとして使用するポート番号
   type: NodePort

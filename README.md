@@ -16,12 +16,15 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 1. guiへのアクセス
 kubectl proxy
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ 
+1. 認証トークン取得
+kubectl -n kubernetes-dashboard create token admin-user
 
 
 ## Kubenetesでのイメージ利用
 
+podman build . -t rails
 podman save localhost/rails -o rails.tgz
-KIND_EXPERIMENTAL_PROVIDER=podman kind load image-archive rails.tgz
+kind load image-archive rails.tgz
 
 ## ECRへのイメージプッシュ
 aws ecr get-login-password --region ap-northeast-1 --profile tteshima| podman login --username AWS --password-stdin 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com
@@ -42,3 +45,9 @@ https://qiita.com/tatsurou313/items/223dfa599ee5aaf6b2f0
 
 ホストのボリュームをkindに見せる。
 https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3
+
+WSLでpodmanを利用する
+https://qiita.com/yo_C_ta/items/df2a70de6a653226a173
+
+Kubernetes参考資料
+https://qiita.com/yuta-katayama-23/items/8d5528005c9ce2b7614c

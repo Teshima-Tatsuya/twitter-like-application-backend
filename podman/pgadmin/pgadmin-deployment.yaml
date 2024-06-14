@@ -17,10 +17,10 @@ spec:
         image: dpage/pgadmin4:latest
         resources:
           limits:
-            memory: "512Mi"
+            memory: "256Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 81
         env:
         - name: PGADMIN_DEFAULT_EMAIL
           value: admin@example.com
