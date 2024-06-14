@@ -19,7 +19,7 @@ spec:
           - bundle
           - exec
         args:
-          - rails s -p 3000 -b '0.0.0.0'
+          - unicorn -c /rails/config/unicorn.rb -E development
 
         resources:
           limits:
@@ -32,9 +32,7 @@ spec:
             value: development
         volumeMounts:
           - name: rails-storage
-            mountPath: /rails/tmp
-          - name: rails-storage
-            mountPath: /rails/vendor
+            mountPath: /rails/log
       volumes:
         - name: rails-storage
           persistentVolumeClaim:
