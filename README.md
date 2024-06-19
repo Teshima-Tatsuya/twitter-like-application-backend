@@ -22,9 +22,15 @@ kubectl -n kubernetes-dashboard create token admin-user
 
 ## Kubenetesでのイメージ利用
 
+### rails
 podman build . -t rails
 podman save localhost/rails -o rails.tgz
 kind load image-archive rails.tgz
+### nginx
+podman build . -t nginx
+podman save localhost/nginx -o nginx.tgz
+kind load image-archive nginx.tgz
+
 
 ## ECRへのイメージプッシュ
 aws ecr get-login-password --region ap-northeast-1 --profile tteshima| podman login --username AWS --password-stdin 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com
@@ -51,3 +57,6 @@ https://qiita.com/yo_C_ta/items/df2a70de6a653226a173
 
 Kubernetes参考資料
 https://qiita.com/yuta-katayama-23/items/8d5528005c9ce2b7614c
+
+Nginxのフォワードプロキシ設定
+https://github.com/dominikwinter/nginx-forward-proxy/blob/master/Dockerfile
