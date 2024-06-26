@@ -33,10 +33,17 @@ kind load image-archive nginx.tgz
 
 
 ## ECRへのイメージプッシュ
+### ECRログイン
 aws ecr get-login-password --region ap-northeast-1 --profile tteshima| podman login --username AWS --password-stdin 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com
-podman build -t twitter-like-application .
-podman tag twitter-like-application:latest 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/twitter-like-application:latest
-podman push 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/twitter-like-application:latest
+
+### push image
+#### nginx
+podman tag nginx:latest 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:latest
+podman push 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:latest
+#### rails
+podman build -t rails .
+podman tag rails:latest 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/rails:latest
+podman push 827079964324.dkr.ecr.ap-northeast-1.amazonaws.com/rails:latest
 
 ## トラブルシューティング
 - podにログインしたい場合
