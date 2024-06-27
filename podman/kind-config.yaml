@@ -15,5 +15,3 @@ nodes:
        hostPath: /private/var/mnt/postgres
      - containerPath: /pgadmin
        hostPath: /private/var/mnt/pgadmin
-     - containerPath: /rails
-       hostPath: /private/var/mnt/rails

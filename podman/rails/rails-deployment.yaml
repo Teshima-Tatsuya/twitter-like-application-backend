@@ -30,10 +30,3 @@ spec:
         env:
           - name: RAILS_ENV
             value: development
-        volumeMounts:
-          - name: rails-storage
-            mountPath: /rails/log
-      volumes:
-        - name: rails-storage
-          persistentVolumeClaim:
-            claimName: pvc-rails

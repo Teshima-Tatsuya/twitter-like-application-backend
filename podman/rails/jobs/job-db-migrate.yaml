@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+      - name: rails
+        image: localhost/rails:latest
+        imagePullPolicy: Never
+        command: 
+          - bundle
+          - exec
+          - rails
+          - db:migrate
+        env:
+          - name: RAILS_ENV
+            value: development
+      restartPolicy: Never
