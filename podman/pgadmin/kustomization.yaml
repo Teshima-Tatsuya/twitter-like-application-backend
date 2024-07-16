@@ -3,5 +3,3 @@ kind: Kustomization
 resources:
   - ./pgadmin-deployment.yaml
   - ./pgadmin-service.yaml
-  - ./pv-pgadmin.yaml
-  - ./pvc-pgadmin.yaml

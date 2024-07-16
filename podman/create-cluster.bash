@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+mkdir -p ./postgresql/data && chmod 777 ./postgresql/data
 kind create cluster --config=kind-config.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
@@ -29,6 +30,10 @@ for i in {1..10}; do
   echo ${STATUS}
   if [ ${STATUS} = "true" ]; then
     break;
+  fi
+  if [ ${i} -eq 10 ]; then
+    echo "postgresqlが正しく起動されませんでした"
+    exit 255;
   fi
 done
 

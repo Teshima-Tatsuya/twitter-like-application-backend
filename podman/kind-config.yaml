@@ -12,6 +12,4 @@ nodes:
   - role: worker
     extraMounts:
      - containerPath: /postgres
-       hostPath: /private/var/mnt/postgres
-     - containerPath: /pgadmin
-       hostPath: /private/var/mnt/pgadmin
+       hostPath: ./postgresql/data
