@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 mkdir -p ./postgresql/data && chmod 777 ./postgresql/data
 kind create cluster --config=kind-config.yaml
