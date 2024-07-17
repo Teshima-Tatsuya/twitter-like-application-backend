@@ -4,5 +4,4 @@ resources:
   - ./postgresql
   - ./pgadmin
   - ./rails
-  - ./dashboard
   - ./nginx
