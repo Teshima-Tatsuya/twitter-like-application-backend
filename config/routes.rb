@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :posts
       resources :users
+      get '/profile', to: 'users#profile'
+      post '/login', to: 'authentication#login'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
