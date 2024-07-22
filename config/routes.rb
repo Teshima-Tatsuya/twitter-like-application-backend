@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       resources :posts
       resources :users
       get '/profile', to: 'users#profile'
+      get '/posts/all', to: 'posts#all'
+      get '/posts/following', to: 'posts#following'
       post '/following/:user_id', to: 'users#following'
       post '/login', to: 'authentication#login'
       post '/follow/:id', to: 'follows#create'

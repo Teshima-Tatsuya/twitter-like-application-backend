@@ -11,6 +11,18 @@ class Api::V1::PostsController < ApplicationController
         render json: posts
     end
 
+    # GET /posts/all
+    def all
+        posts = Post.joins(:user).select("posts.*, users.name AS name, users.id AS userId").order(created_at: "DESC")
+        render json: posts
+    end
+
+    # GET /posts/following
+    def following
+        posts = Post.joins(:user).select("posts.*, users.name AS name, users.id AS userId").order(created_at: "DESC")
+        render json: posts
+    end
+
     def create
         post = Post.new(post_params)
 
