@@ -30,8 +30,11 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def following
+        authenticate_user
         user_id = params[:user_id]
-        render json: { following: following? }
+        user = User.find(user_id)
+        following = @current_user.following?(user)
+        render json: { following: following }
     end
 
     private
