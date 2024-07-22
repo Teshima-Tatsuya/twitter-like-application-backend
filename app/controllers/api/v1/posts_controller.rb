@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
     # GET /posts
     def index
-        posts = Post.joins(:user).select("posts.*, users.name AS name").order(created_at: "DESC")
+        posts = Post.joins(:user).select("posts.*, users.name AS name, users.id AS userId").order(created_at: "DESC")
         render json: posts
     end
     

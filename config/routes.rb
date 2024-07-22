@@ -4,7 +4,10 @@ Rails.application.routes.draw do
       resources :posts
       resources :users
       get '/profile', to: 'users#profile'
+      post '/following/:user_id', to: 'users#following'
       post '/login', to: 'authentication#login'
+      post '/follow/:id', to: 'follows#create'
+      post '/unfollow/:id', to: 'follows#destroy'
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
