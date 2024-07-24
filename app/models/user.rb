@@ -1,7 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :email, presence: true, uniqueness: true
-    validates :password_digest, presence: true
+    validates :name, presence: true, length: { maximum: 100 }
+    validates :email, presence: true, uniqueness: true, length: { maximum: 254 }
+    validates :password_digest, presence: true, length: { maximum: 128 }
 
     has_many :posts
     has_many :followings, foreign_key: :following_user_id, class_name: 'Follow'
