@@ -5,24 +5,28 @@ class User < ApplicationRecord
     validates :password_digest, presence: true, length: { maximum: 128 }
 
     has_many :posts
-    has_many :followings, foreign_key: :following_user_id, class_name: 'Follow'
-    has_many :followers, foreign_key: :follower_user_id, class_name: 'Follow'
-    has_many :followed_users, through: :followings, source: :follower_user
-    has_many :following_users, through: :followers, source: :following_user
+
+    # フォローしている
+    has_many :following_relations, foreign_key: :following_user_id, class_name: 'Follow'
+    has_many :following_users, through: :following_relations, source: :follower_user
+
+    # フォローされている
+    has_many :follower_relations, foreign_key: :follower_user_id, class_name: 'Follow'
+    has_many :follower_users, through: :follower_relations, source: :following_user
 
     def follow(user)
-        followings.create(follower_user: user)
+        following_relations.create(follower_user: user)
     end
 
     def unfollow(user)
-        followings.find_by(follower_user: user)&.destroy
+        following_relations.find_by(follower_user: user)&.destroy
     end
 
     def following?(user)
-        followings.exists?(follower_user: user)
+        following_relations.exists?(follower_user: user)
     end
 
     def feed
-        followed_users.pluck(:id)
+        following_users.pluck(:id)
     end
 end
