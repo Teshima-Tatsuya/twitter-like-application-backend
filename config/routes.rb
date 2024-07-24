@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :posts
-      resources :users
       get '/profile', to: 'users#profile'
       get '/posts/all', to: 'posts#all'
       get '/posts/following', to: 'posts#following'
@@ -10,6 +8,8 @@ Rails.application.routes.draw do
       post '/login', to: 'authentication#login'
       post '/follow/:id', to: 'follows#create'
       post '/unfollow/:id', to: 'follows#destroy'
+      resources :posts
+      resources :users
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

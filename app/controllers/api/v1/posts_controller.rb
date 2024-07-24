@@ -19,7 +19,9 @@ class Api::V1::PostsController < ApplicationController
 
     # GET /posts/following
     def following
-        posts = Post.joins(:user).select("posts.*, users.name AS name, users.id AS userId").order(created_at: "DESC")
+        return unless authenticate_user
+        follower_user_ids = @current_user.feed
+        posts = Post.where(user_id: follower_user_ids).joins(:user).select("posts.*, users.name AS name, users.id AS userId").order(created_at: :desc)
         render json: posts
     end
 

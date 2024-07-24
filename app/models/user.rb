@@ -6,6 +6,8 @@ class User < ApplicationRecord
     has_many :posts
     has_many :followings, foreign_key: :following_user_id, class_name: 'Follow'
     has_many :followers, foreign_key: :follower_user_id, class_name: 'Follow'
+    has_many :followed_users, through: :followings, source: :follower_user
+    has_many :following_users, through: :followers, source: :following_user
 
     def follow(user)
         followings.create(follower_user: user)
@@ -17,5 +19,9 @@ class User < ApplicationRecord
 
     def following?(user)
         followings.exists?(follower_user: user)
+    end
+
+    def feed
+        followed_users.pluck(:id)
     end
 end
