@@ -18,4 +18,10 @@ spec:
         env:
           - name: RAILS_ENV
             value: development
+          - name: DB_HOST
+            value: postgresql-service
+          - name: DB_USERNAME
+            value: postgres
+          - name: DB_PASSWORD
+            value: postgres
       restartPolicy: Never

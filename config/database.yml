@@ -32,7 +32,9 @@ production:
 development:
   <<: *default
   host: <%= ENV["DB_HOST"] %>
-  database: twitter_development
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  database: twitter
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
