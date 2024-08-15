@@ -4,7 +4,7 @@ podman build . -t rails
 ## kubernetes環境構築
 1. podmanインストール
 2. kindインストール
-KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster --config=kind-config.yaml
+kind create cluster --config=kind-config.yaml
 
 3. kind停止
 KIND_EXPERIMENTAL_PROVIDER=podman kind delete cluster

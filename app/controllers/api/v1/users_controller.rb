@@ -25,8 +25,9 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def profile
-        authenticate_user
-        render json: { user: @current_user}
+        if authenticate_user
+            render json: { user: @current_user}
+        end
     end
 
     def following

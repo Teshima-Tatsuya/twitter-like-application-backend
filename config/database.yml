@@ -31,7 +31,7 @@ production:
   
 development:
   <<: *default
-  host: postgresql-service
+  host: <%= ENV["DB_HOST"] %>
   database: twitter_development
 
   # The specified database role being used to connect to PostgreSQL.
